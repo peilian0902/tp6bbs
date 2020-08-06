@@ -1,5 +1,5 @@
 <?php
-// 这是系统自动生成的公共文件
+// 这是index应用公共文件
 
 /**
  * 路由页面css class名
@@ -38,4 +38,5 @@ function asset_path(string $file_path): string
     }
     return $file_path.'?c='.$file_time;
 }
+
 
