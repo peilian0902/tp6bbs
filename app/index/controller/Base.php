@@ -9,6 +9,8 @@ use think\Validate;
 use think\facade\View;
 use think\exception\ValidateException;
 use app\common\model\Config as ConfigModel;
+use think\facade\Session;
+use app\common\model\User as UserModel;
 
 /**
  * 控制器基础类
@@ -60,7 +62,20 @@ abstract class Base
             // 读取站点设置信息
             $site = ConfigModel::siteSetting();
             View::assign('site', $site);
+
+            // 页面提示信息
+            $flash = [];
+            $flash_names = ['success', 'info', 'warning', 'danger'];
+            foreach ($flash_names as $key => $name) {
+                if (Session::has($name)) {
+                    $flash[$name] = Session::pull($name);
+                }
+            }
+            View::assign('flash', $flash);
         }
+
+        // 当前登录用户
+        View::assign('current_user', UserModel::currentUser());
     }
 
     /**
