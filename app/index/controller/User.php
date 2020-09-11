@@ -4,6 +4,8 @@ declare (strict_types = 1);
 namespace app\index\controller;
 
 use app\common\model\User as UserModel;
+use think\facade\Session;
+use app\common\exception\ValidateException;
 
 class User extends Base
 {
@@ -40,7 +42,7 @@ class User extends Base
             Session::flash('info', '请先登录系统。');
         } else if (!$this->request->isAjax() || !$this->request->isPut() ) {
             Session::flash('danger', '对不起，你访问页面不存在。');
-            return $this->redirect(url('[user.read]', ['id' => $currentUser->id]));
+            return $this->redirect(url('user/read', ['id' => $currentUser->id]));
         }
 
         $data = $this->request->post();
@@ -54,6 +56,6 @@ class User extends Base
 
         $message = '更新个人资料成功';
         Session::set('success', $message);
-        return $this->success($message, url('[user.read]', ['id' => $currentUser->id]));
+        return $this->success($message, url('user/read', ['id' => $currentUser->id]));
     }
 }

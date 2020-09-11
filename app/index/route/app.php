@@ -16,5 +16,6 @@ Route::post('signup', 'register/save')->name('page.signup.save');
 //在项目里注册多个路由规则后，系统会依次遍历注册过的满足请求类型的路由规则，一旦匹配到正确的路由规则后则开始执行最终的调度方法，
 //后续规则就不再检测。
 
-
-
+// 上传图片
+Route::get('upload', 'upload/create')->name('upload.create');
+Route::post('upload', 'upload/save')->name('upload.save');

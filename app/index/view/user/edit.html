@@ -12,7 +12,7 @@
 
             <div class="card-body">
 
-                <form id="model-form" class="needs-validation" novalidate action="{:url('[user.update]')}" method="POST" accept-charset="UTF-8">
+                <form id="model-form" class="needs-validation" novalidate action="{:url('user/update')}" method="POST" accept-charset="UTF-8">
                     <input type="hidden" name="_method" value="PUT">
 
                     <div class="form-group">
@@ -41,7 +41,7 @@
             {
                 "name":{
                     required: true,
-                    rangelength: [6, 20]
+                    rangelength: [2, 20]
                 }, "introduction":{
                     maxlength: 100
                 }
