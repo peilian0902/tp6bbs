@@ -22,7 +22,8 @@ Route::post('verify/valid_code', 'verify/valid_code')->name('verify.valid_code')
 // 用户登录与退出
 Route::get('login', 'login/create')->name('page.login');
 Route::post('login', 'login/save')->name('page.login.save');//{:url('[page.login.save]')}路径不成功
-Route::post('logout', 'login/delete')->name('page.logout');
+//Route::post('logout', 'login/delete')->name('page.logout');
+Route::post('page/logout', 'login/delete');
 
 // 重置密码
 // 发送手机验证码
@@ -34,4 +35,10 @@ Route::get('reset', 'reset/create')->name('page.reset');
 Route::post('reset', 'reset/save')->name('page.reset.save');
 
 // 个人中心
+Route::get('user/edit', 'user/edit')->name('user.edit');
+Route::put('user/update', 'user/update')->name('user.update');
 Route::get('user/<id>', 'user/read')->name('user.read');
+
+//Route::get('/home/:name',function ($name){
+//    return '你的姓名是:'.$name;
+//});
