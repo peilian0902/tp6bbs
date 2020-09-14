@@ -238,7 +238,7 @@ class User extends Model
             throw $e;
         }
 
-        $is_save = $this->allowField(['name', 'introduction'])->save($data);
+        $is_save = $this->allowField(['name', 'introduction', 'avatar'])->save($data);
         if (!$is_save) {
             throw new \Exception('更新个人信息失败');
         }
@@ -249,6 +249,19 @@ class User extends Model
         Session::set(self::CURRENT_KEY, $user);
 
         return true;
+    }
+
+    /**
+     * 用户头像路径
+     * @Author   zhanghong(Laifuzi)
+     * @return   string
+     */
+    public function getAvatarPathAttr()
+    {
+        if (empty($this->avatar)) {
+            return '/static/assets/index/images/default_avatar.png';
+        }
+        return $this->avatar;
     }
 
 }

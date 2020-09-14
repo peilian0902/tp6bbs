@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace app\index\controller;
 
 use app\common\model\User as UserModel;
+use app\ExceptionHandle;
 use think\facade\Session;
 use app\common\exception\ValidateException;
 
@@ -46,6 +47,7 @@ class User extends Base
         }
 
         $data = $this->request->post();
+
         try {
             $currentUser->updateProfile($data);
         } catch (ValidateException $e) {
